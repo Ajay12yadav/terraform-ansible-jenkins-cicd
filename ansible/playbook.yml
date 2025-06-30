@@ -1,0 +1,14 @@
+- name: Setup web server
+  hosts: ansible_vm
+  become: yes
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Copy web page
+      copy:
+        src: ../app/index.html
+        dest: /var/www/html/index.html
